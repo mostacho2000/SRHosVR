@@ -3,7 +3,17 @@ guid: 744d85a1d794fd24bb479f4d545e6b45
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_DoubleDoor_DL
+    second: {fileID: 2100000, guid: 0e9c07d0c4509df49875ffca1bde5084, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_DoubleDoor_Glass.002
+    second: {fileID: 2100000, guid: 19609b6ddea2d604b91ae396fafc6e2f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -46,7 +56,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
