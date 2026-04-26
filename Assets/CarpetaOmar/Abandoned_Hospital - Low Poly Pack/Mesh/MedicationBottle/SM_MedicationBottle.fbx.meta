@@ -3,7 +3,12 @@ guid: 9f41ac51f96fd2948b85c197dddd1fd8
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_MedicationBottle
+    second: {fileID: 2100000, guid: a1f948e72a08a6047bc342e85859b8bf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

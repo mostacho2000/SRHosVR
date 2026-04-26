@@ -3,7 +3,12 @@ guid: e67d52183b80bd542a55f0359c522df4
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_PillBottle_S
+    second: {fileID: 2100000, guid: 461e58d2d4bbd5b43ad19cf40543aa70, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
