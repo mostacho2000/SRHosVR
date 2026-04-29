@@ -3,7 +3,12 @@ guid: 95ba060b5da467344b2dadc49fb1618a
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_FilingCabinet_Draw
+    second: {fileID: 2100000, guid: 53a04918105f9a741a117dcfb247353f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
