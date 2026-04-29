@@ -3,33 +3,74 @@ using UnityEngine;
 public class Activate_MED_Quest : MonoBehaviour
 {
 
-    public GameObject objectToActivate;
+     [Header("Panel Objects")]
+    public GameObject[] typeAObjects; // Primer tipo de objetos del panel
+    public GameObject[] typeBObjects; // Segundo tipo de objetos del panel
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Activation Settings")]
+    public bool useTypeA = true; // Si es true, activa un objeto de Type A; si es false, activa de Type B
+    public int activeObjectIndex = 0; // Índice del objeto a activar dentro del grupo seleccionado
+
+    private GameObject currentActiveObject;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        HideAllObjects();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            objectToActivate.SetActive(true);
-        }
+        if (!other.CompareTag("Player"))
+            return;
+
+        ActivateSelectedObject();
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player"))
+            return;
+
+        HideAllObjects();
+    }
+
+    private void ActivateSelectedObject()
+    {
+        HideAllObjects();
+
+        GameObject[] selectedList = useTypeA ? typeAObjects : typeBObjects;
+        if (selectedList == null || selectedList.Length == 0)
+            return;
+
+        int index = Mathf.Clamp(activeObjectIndex, 0, selectedList.Length - 1);
+        GameObject toActivate = selectedList[index];
+        if (toActivate != null)
         {
-            objectToActivate.SetActive(false);
+            toActivate.SetActive(true);
+            currentActiveObject = toActivate;
+        }
+    }
+
+    private void HideAllObjects()
+    {
+        currentActiveObject = null;
+
+        if (typeAObjects != null)
+        {
+            foreach (GameObject obj in typeAObjects)
+            {
+                if (obj != null)
+                    obj.SetActive(false);
+            }
+        }
+
+        if (typeBObjects != null)
+        {
+            foreach (GameObject obj in typeBObjects)
+            {
+                if (obj != null)
+                    obj.SetActive(false);
+            }
         }
     }
 }
