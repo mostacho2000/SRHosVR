@@ -14,7 +14,7 @@ public class Colors_Manager : MonoBehaviour
 
     public List<ButtonData> buttonDatas = new List<ButtonData>();
 
-    [Tooltip("Asignar aquí la combinación correcta usando índices: 0=Green, 1=Blue, 2=Pink, 3=Red")]
+    [Tooltip("Asignar aquí la combinación correcta usando índices: 0=Green, 1=Blue, 2=Pink, 3=Red, 4=Yellow")]
     public List<int> targetCombination = new List<int> { 0, 0, 0, 0, 0 };
 
     [Tooltip("GameObject cuyo material cambiará a verde cuando la combinación sea correcta")]
@@ -32,7 +32,7 @@ public class Colors_Manager : MonoBehaviour
     private Color targetObjectOriginalColor = Color.white;
 
     private static readonly string[] colorNames = { "Green", "Blue", "Pink", "Red" };
-    private static readonly Color[] colors = { Color.green, Color.blue, new Color(1f, 0.5f, 0.8f), Color.red };
+    private static readonly Color[] colors = { Color.green, new Color (0f,0f, 1f), new Color(1f, 0.5f, 0.8f), Color.red, new Color(1f, 1f, 0f) };
 
 
     void Start()
