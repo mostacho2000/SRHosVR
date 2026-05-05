@@ -39,7 +39,7 @@ public class Code_Manager : MonoBehaviour
     // Método para agregar un número al input field
     private void AddNumber(string num)
     {
-        if (inputField.text.Length < 4) // Limitar a 4 dígitos
+        if (inputField.text.Length < 5) // Limitar a 5 dígitos
         {
             inputField.text += num;
         }
@@ -48,7 +48,7 @@ public class Code_Manager : MonoBehaviour
     // Método para verificar el código
     private void CheckCode()
     {
-        if (inputField.text.Length == 4)
+        if (inputField.text.Length == 5)
         {
             if (inputField.text == correctCode)
             {
