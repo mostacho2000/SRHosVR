@@ -7,36 +7,50 @@ public class Animations_Manager : MonoBehaviour
     public Animator rightDoorAnimator;
     public string leftOpenTrigger = "Open";
     public string rightOpenTrigger = "Open";
-    public string leftOpenState = "Open";
-    public string rightOpenState = "Open";
-    public bool useAnimatorTrigger = true;
+    public string leftOpenState = "Door_A_Open";
+    public string rightOpenState = "Door_B_Open";
+    public string leftUnlockedParameter = "doorUnlocked";
+    public string rightUnlockedParameter = "doorUnlocked";
+    public bool useAnimatorBoolForOpen = true;
 
     [Header("Legacy Animation (optional)")]
     public Animation leftDoorAnimation;
     public Animation rightDoorAnimation;
-    public string leftAnimationClipName = "Open";
-    public string rightAnimationClipName = "Open";
+    public string leftAnimationClipName = "Door_A_Open";
+    public string rightAnimationClipName = "Door_B_Open";
 
     [Header("Door State")]
-    public bool canOpenDoor = false;
+    public bool doorUnlocked = false;
     public bool isDoorOpen = false;
 
-    public void AllowDoorOpen(bool allow)
+    public void UnlockDoor()
     {
-        canOpenDoor = allow;
+        doorUnlocked = true;
+        SetDoorAnimatorBool(true);
+        Debug.Log("[Animations_Manager] Door unlocked.");
+    }
+
+    public void LockDoor()
+    {
+        doorUnlocked = false;
+        SetDoorAnimatorBool(false);
+        Debug.Log("[Animations_Manager] Door locked.");
     }
 
     public void OnDoorButtonPressed()
     {
-        if (!canOpenDoor)
-        {
-            Debug.Log("[Animations_Manager] La puerta no está lista para abrir.");
-            return;
-        }
+        doorUnlocked = true;
+        SetDoorAnimatorBool(true);
 
         if (isDoorOpen)
         {
             Debug.Log("[Animations_Manager] La puerta ya está abierta.");
+            return;
+        }
+
+        if (useAnimatorBoolForOpen)
+        {
+            Debug.Log("[Animations_Manager] Se cambió doorUnlocked en los animators.");
             return;
         }
 
@@ -49,19 +63,9 @@ public class Animations_Manager : MonoBehaviour
 
         if (leftDoorAnimator != null)
         {
-            if (useAnimatorTrigger && !string.IsNullOrEmpty(leftOpenTrigger))
+            if (TryPlayAnimator(leftDoorAnimator, leftOpenTrigger, leftOpenState))
             {
-                leftDoorAnimator.SetTrigger(leftOpenTrigger);
                 played = true;
-            }
-            else if (!string.IsNullOrEmpty(leftOpenState))
-            {
-                leftDoorAnimator.Play(leftOpenState);
-                played = true;
-            }
-            else
-            {
-                Debug.LogWarning("[Animations_Manager] leftDoorAnimator asignado pero no se proporcionó trigger ni estado.", this);
             }
         }
         else if (leftDoorAnimation != null)
@@ -83,19 +87,9 @@ public class Animations_Manager : MonoBehaviour
 
         if (rightDoorAnimator != null)
         {
-            if (useAnimatorTrigger && !string.IsNullOrEmpty(rightOpenTrigger))
+            if (TryPlayAnimator(rightDoorAnimator, rightOpenTrigger, rightOpenState))
             {
-                rightDoorAnimator.SetTrigger(rightOpenTrigger);
                 played = true;
-            }
-            else if (!string.IsNullOrEmpty(rightOpenState))
-            {
-                rightDoorAnimator.Play(rightOpenState);
-                played = true;
-            }
-            else
-            {
-                Debug.LogWarning("[Animations_Manager] rightDoorAnimator asignado pero no se proporcionó trigger ni estado.", this);
             }
         }
         else if (rightDoorAnimation != null)
@@ -124,5 +118,49 @@ public class Animations_Manager : MonoBehaviour
         {
             Debug.LogWarning("[Animations_Manager] No se pudo abrir la puerta porque no se inició ninguna animación.", this);
         }
+    }
+
+    private bool TryPlayAnimator(Animator animator, string triggerName, string stateName)
+    {
+        if (!string.IsNullOrEmpty(triggerName) && HasTriggerParameter(animator, triggerName))
+        {
+            animator.SetTrigger(triggerName);
+            return true;
+        }
+
+        if (!string.IsNullOrEmpty(stateName))
+        {
+            animator.Play(stateName);
+            return true;
+        }
+
+        Debug.LogWarning($"[Animations_Manager] Animator '{animator.gameObject.name}' no tiene trigger '{triggerName}' y no se proporcionó estado válido.", this);
+        return false;
+    }
+
+    private void SetDoorAnimatorBool(bool value)
+    {
+        if (leftDoorAnimator != null && !string.IsNullOrEmpty(leftUnlockedParameter))
+        {
+            leftDoorAnimator.SetBool(leftUnlockedParameter, value);
+        }
+
+        if (rightDoorAnimator != null && !string.IsNullOrEmpty(rightUnlockedParameter))
+        {
+            rightDoorAnimator.SetBool(rightUnlockedParameter, value);
+        }
+    }
+
+    private bool HasTriggerParameter(Animator animator, string triggerName)
+    {
+        foreach (var parameter in animator.parameters)
+        {
+            if (parameter.type == AnimatorControllerParameterType.Trigger && parameter.name == triggerName)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
