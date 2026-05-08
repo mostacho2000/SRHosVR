@@ -3,7 +3,12 @@ guid: 7f6c3b86b36a85b4db83718628d0bfcd
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_OfficeRoom_Ceiling
+    second: {fileID: 2100000, guid: 32c77c4a2b17e57418221102c79a5086, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -46,7 +51,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
