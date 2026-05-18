@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 1617797473221220905}
   m_Layer: 0
   m_Name: Alicate_Interactive
-  m_TagString: Untagged
+  m_TagString: pinzas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,7 +249,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7092263, z: 0, w: 0.70498085}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.566806, y: 8.566799, z: 8.566806}
+  m_LocalScale: {x: 8.566807, y: 8.566799, z: 8.566807}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7606207092285178453}

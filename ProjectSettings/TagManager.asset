@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - pinzas
+  - bisturi
+  - herramienta
+  - tijeras
+  - tijeras_2
+  - spherINT
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7582138723732523123}
   m_Layer: 0
   m_Name: Tijeras_Interactive
-  m_TagString: Untagged
+  m_TagString: tijeras
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

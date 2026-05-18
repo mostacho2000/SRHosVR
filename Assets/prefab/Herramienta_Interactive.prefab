@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 2309981357485917819}
   m_Layer: 0
   m_Name: Herramienta_Interactive
-  m_TagString: Untagged
+  m_TagString: herramienta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,16 +318,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2788238611276417219}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7092291, y: 0.000000053224174, z: -0.70497817, w: 0.00000005354535}
+  m_LocalRotation: {x: -0.7092263, y: 0, z: 0.70498085, w: 0}
   m_LocalPosition: {x: 0.1288, y: 0, z: 0}
-  m_LocalScale: {x: 1.5664252, y: 1.5664258, z: 1.5664252}
+  m_LocalScale: {x: 1.5664252, y: 1.5664259, z: 1.5664252}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 900926666116229426}
   - {fileID: 7136023853095856585}
   - {fileID: 4437794212942446711}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: 89.656, z: 0}
 --- !u!54 &6273822939150269512
 Rigidbody:
   m_ObjectHideFlags: 0
